@@ -1,0 +1,25 @@
+"ID",Tipo,Modulo,Nombre,Descripcion,Prioridad,Estado
+RF-001,Funcional,Inventarios,Registro de movimientos,Registrar entradas y salidas de insumos.,Alta,Pendiente
+RF-002,Funcional,Inventarios,Control de stock,Actualizar el stock en tiempo real.,Alta,Pendiente
+RF-003,Funcional,Inventarios,Alertas de escasez,Generar alertas de insumos próximos a agotarse.,Media,Pendiente
+RF-004,Funcional,Inventarios,Reportes de inventario,Emitir reportes de inventario y costos.,Media,Pendiente
+RF-005,Funcional,Entregas,Registro de órdenes,Registrar órdenes de venta confirmadas.,Alta,Pendiente
+RF-006,Funcional,Entregas,Asignación de pedidos,Asignar repartidores a las órdenes de entrega.,Alta,Pendiente
+RF-007,Funcional,Entregas,Planificación de rutas,Planificar rutas de entrega básicas.,Media,Pendiente
+RF-008,Funcional,Entregas,Gestión de estados,"Permitir seguimiento del estado de las entregas (pendiente, en camino, entregado).",Alta,Pendiente
+RF-009,Funcional,Entregas,Confirmación digital,Confirmar entregas mediante firma o registro digital.,Alta,Pendiente
+RF-010,Funcional,CRM (Leads),Registro de prospectos,Registrar clientes potenciales (leads) en una base de datos.,Media,Pendiente
+RF-011,Funcional,CRM (Leads),Segmentación de clientes,Segmentar clientes por zona o tipo.,Baja,Pendiente
+RF-012,Funcional,CRM (Leads),Automatización inicial,"Automatizar el envío de mensajes iniciales (WhatsApp, correo).",Baja,Pendiente
+RNF-001,No Funcional,UX/UI,Usabilidad,Interfaz sencilla y fácil de usar para usuarios con conocimientos básicos.,Alta,Pendiente
+RNF-002,No Funcional,Arquitectura,Multiplataforma,Acceso desde dispositivos móviles y PC.,Alta,Pendiente
+RNF-003,No Funcional,Rendimiento,Tiempo de respuesta,Tiempo de respuesta rápido (menos de 3 segundos por operación).,Media,Pendiente
+RNF-004,No Funcional,Seguridad,Protección de acceso,Seguridad en el manejo de datos (usuarios y clientes).,Alta,Pendiente
+RNF-005,No Funcional,Disponibilidad,Uptime,Disponibilidad mínima del sistema del 95%.,Alta,Pendiente
+RNF-006,No Funcional,Arquitectura,Escalabilidad,Escalabilidad para aumentar productos y clientes sin afectar el rendimiento.,Media,Pendiente
+RNF-007,No Funcional,Compatibilidad,Navegadores,"Compatibilidad con navegadores comunes (Chrome, Edge, Firefox).",Baja,Pendiente
+RNF-008,No Funcional,Seguridad,Backups,Respaldo automático de la base de datos.,Alta,Pendiente
+RNF-009,No Funcional,Legal,Normativas,Cumplimiento con normativas de protección de datos.,Alta,Pendiente
+RNF-010,No Funcional,Exportación,Formatos estándar,"Capacidad de generar reportes en formatos estándar (PDF, Excel).",Media,Pendiente
+RNF-011,No Funcional,Mantenimiento,Operatividad,Mantenimiento sencillo y bajo costo operativo.,Media,Pendiente
+RNF-012,No Funcional,Arquitectura,Concurrencia,Soporte multicliente (varios usuarios trabajando al mismo tiempo).,Alta,Pendiente
