@@ -24,11 +24,11 @@ Como equipo, sus responsabilidades comprenden:
 
 El proyecto utilizará Scrum como marco de trabajo. Los roles formales de Scrum no deben asignarse automáticamente por el hecho de que existan dos desarrolladores.
 
-| Rol Scrum     | Responsable                                                      |
-| ------------- | ---------------------------------------------------------------- |
-| Product Owner | Por definir y confirmar con el equipo/cliente.                   |
-| Scrum Master  | Por definir por el equipo.                                       |
-| Developers    | Jesús Daniel Seguanes Arias y Cristian Andrés Sierra Ramírez. |
+| Rol Scrum     | Responsable                                    |
+| ------------- | ---------------------------------------------- |
+| Product Owner | Por definir y confirmar con el equipo/cliente. |
+| Scrum Master  | Por definir por el equipo.                     |
+| Developers    | Jesús Daniel Seguanes Arias                   |
 
 La persona que represente a Fresitas debe participar en la aclaración y validación de necesidades y prioridades. La asignación formal del Product Owner debe acordarse, no suponerse.
 
