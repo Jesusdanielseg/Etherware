@@ -1,0 +1,34 @@
+Tabla,Columna,Tipo_Dato,Llave,Descripcion
+usuarios,id_usuario,INT,PK,Identificador único del empleado
+usuarios,nombre,VARCHAR(100),NOT NULL,Nombre completo
+usuarios,email,VARCHAR(100),UNIQUE,Correo para inicio de sesión
+usuarios,contrasena_hash,VARCHAR(255),NOT NULL,Contraseña encriptada por seguridad
+usuarios,rol,VARCHAR(50),NOT NULL,Roles permitidos: Admin / Vendedor / Repartidor
+productos,id_producto,INT,PK,Identificador del insumo
+productos,nombre,VARCHAR(100),UNIQUE,"Ej. Fresas, Vasos, Crema"
+productos,stock_actual,INT,NOT NULL,Cantidad disponible en tiempo real
+productos,stock_minimo,INT,DEFAULT,Umbral para disparar alerta de escasez
+productos,precio_base,"DECIMAL(10,2)",DEFAULT,Costo o precio de referencia
+movimientos_inventario,id_movimiento,INT,PK,Registro de auditoría (RNF)
+movimientos_inventario,id_producto,INT,FK,Referencia al insumo modificado
+movimientos_inventario,id_usuario,INT,FK,Empleado que realizó el movimiento
+movimientos_inventario,tipo,VARCHAR(20),NOT NULL,Valores: Entrada / Salida
+movimientos_inventario,cantidad,INT,NOT NULL,Cuánto entró o salió
+movimientos_inventario,fecha,TIMESTAMP,NOT NULL,Fecha y hora exacta del registro
+leads,id_lead,INT,PK,Identificador del prospecto (CRM)
+leads,nombre,VARCHAR(100),NOT NULL,Nombre del cliente potencial
+leads,telefono,VARCHAR(20),UNIQUE,Número de WhatsApp sin duplicados
+leads,estado,VARCHAR(50),NOT NULL,Valores: Nuevo / Contactado / Convertido
+leads,temperatura,VARCHAR(20),NOT NULL,Valores: Frío / Tibio / Caliente
+leads,id_vendedor,INT,FK,Vendedor responsable del seguimiento
+ordenes_entrega,id_orden,INT,PK,Identificador principal del pedido
+ordenes_entrega,id_lead,INT,FK,Cliente que realizó la compra
+ordenes_entrega,id_repartidor,INT,FK,Domiciliario asignado a la ruta
+ordenes_entrega,estado,VARCHAR(50),NOT NULL,Pendiente / En camino / Entregada / Fallida
+ordenes_entrega,direccion,VARCHAR(255),NOT NULL,Destino físico de la entrega
+ordenes_entrega,fecha_creacion,TIMESTAMP,NOT NULL,Momento exacto de la venta
+detalle_ordenes,id_detalle,INT,PK,Línea individual de la orden
+detalle_ordenes,id_orden,INT,FK,Referencia a la orden principal
+detalle_ordenes,id_producto,INT,FK,Producto específico vendido
+detalle_ordenes,cantidad,INT,NOT NULL,Unidades vendidas de ese producto
+detalle_ordenes,precio_unitario,"DECIMAL(10,2)",NOT NULL,Precio congelado al momento de la venta
