@@ -1,38 +1,44 @@
 # Sistema de Diseño y Accesibilidad
 
-**Descripción:** Este documento establece las reglas visuales, la paleta de colores institucional y los criterios de usabilidad que deben aplicarse durante la maquetación en HTML, CSS (Bootstrap 5) y JavaScript.
+**Descripción:** Este documento establece las reglas visuales, la paleta de colores institucional y los criterios de usabilidad que deben aplicarse durante la maquetación (Bootstrap 5, Chart.js) adaptados a la arquitectura híbrida (Catálogo Público + ERP Privado).
 
 ## 1. Paleta de Colores Institucional
 
-La identidad visual utiliza tonos morados y lilas para transmitir frescura y un carácter artesanal.
+La identidad visual principal utiliza tonos morados y lilas para transmitir frescura y un carácter artesanal. Se incluye un color de acento funcional exclusivo para el cierre de ventas.
 
-* **Fondo claro / Superficies:** `#F2D3F8`
-* **Módulos / Tarjetas:** `#B19EDC`
-* **Color primario / Navbar:** `#B496DB`
-* **Acentos secundarios:** `#B7ABDB`
-* **Fondos degradados:** `#C3AFDB`
+- **Fondo claro / Superficies:** `#F2D3F8`
+- **Módulos / Tarjetas:** `#B19EDC`
+- **Color primario / Navbar:** `#B496DB`
+- **Acentos secundarios:** `#B7ABDB`
+- **Fondos degradados:** `#C3AFDB`
+- **Acción Principal (Checkout):** Verde WhatsApp (`#25D366`)
 
 ## 2. Estilos de Interfaz (UI)
 
-* **Encabezado / Navbar:** Fondo morado con el logo de Fresitas y enlaces principales en texto blanco.
-* **Botones de Acción:** Color morado oscuro con texto blanco y bordes redondeados (Ej: "Crear cuenta", "Agregar al carrito").
-* **Tarjetas (Cards):** Fondo blanco, sombra suave, esquinas redondeadas y separación uniforme para presentar los productos.
-* **Formularios:** Campos con etiquetas claramente visibles, bordes en tono lila y mensajes de error en rojo o color de alerta para validaciones.
-* **Responsive Design:** Uso de la grilla de Bootstrap para adaptar el contenido a dispositivos móviles, tabletas y PC.
+El diseño se divide según el entorno de uso:
+
+- **Portal Público (Catálogo):**
+  - **Enfoque:** *Mobile-First*. Interfaces visuales atractivas con imágenes grandes.
+  - **Botones de Acción:** Color morado oscuro para "Agregar al carrito" y Verde WhatsApp obligatorio para el botón de "Confirmar Pedido".
+  - **Tarjetas (Cards):** Fondo blanco o `#F2D3F8`, sombra suave y esquinas redondeadas para los productos.
+- **Portal Privado (Administración/Ventas):**
+  - **Enfoque:** *Desktop-First*. Interfaces densas en datos.
+  - **Componentes:** Tablas de datos (DataGrids) para inventario, gráficos de Chart.js para el Dashboard y modales para la validación de comprobantes de pago.
+  - **Formularios:** Bordes en tono lila y mensajes de error en colores de alerta semánticos de Bootstrap (rojo/naranja) para prevenir fallos operativos.
 
 ## 3. Criterios de Usabilidad (UX)
 
-El desarrollo debe cumplir con los 5 criterios fundamentales:
+El desarrollo debe cumplir con los 5 criterios fundamentales aplicados al modelo de "fricción cero":
 
-1. **Facilidad de aprendizaje:** Operaciones básicas intuitivas que minimicen el tiempo de adaptación del usuario.
-2. **Eficiencia de uso:** Rutas cortas que agilicen el proceso de compra.
-3. **Memorabilidad:** Diseño predecible para que los usuarios recuerden cómo usar el sistema al regresar.
-4. **Prevención de errores:** Emisión de mensajes predeterminados de guía en formularios (ej. validar correos y campos obligatorios) en lugar de fallas críticas.
+1. **Facilidad de aprendizaje:** El cliente no necesita tutoriales ni cuentas; el flujo es simplemente navegar, agregar y exportar a WhatsApp.
+2. **Eficiencia de uso:** Minimizar los clics. El carrito debe estar siempre accesible y el checkout debe exigir solo los datos estrictamente necesarios (dirección).
+3. **Memorabilidad:** Uso de iconografía universal (un carrito para compras, un engranaje para configuración, un icono de WhatsApp para enviar).
+4. **Prevención de errores:** Deshabilitar el botón de envío si el carrito está vacío o faltan datos de envío, emitiendo alertas claras antes del salto a WhatsApp.
 5. **Satisfacción subjetiva:** Garantizar una experiencia agradable a través de una interfaz limpia y sin sobrecarga cromática.
 
 ## 4. Pautas de Accesibilidad (WCAG)
 
-* **Perceptibilidad:** Añadir textos alternativos a imágenes y elementos visuales para compatibilidad con lectores de pantalla.
-* **Operabilidad:** Permitir que los formularios y botones puedan navegarse utilizando únicamente el teclado.
-* **Comprensibilidad:** Instrucciones claras en la interfaz para evitar confusiones en el proceso de compra.
-* **Robustez:** Código estructurado correctamente en HTML5 para ser interpretado por diversos navegadores (Chrome, Firefox, Edge, Safari) y tecnologías asistivas.
+- **Perceptibilidad:** Añadir atributos `alt` a todas las imágenes de los productos del catálogo para compatibilidad con lectores de pantalla.
+- **Operabilidad:** Permitir que los modales del carrito y los formularios del panel administrativo puedan navegarse utilizando la tecla `Tab` del teclado.
+- **Comprensibilidad:** Instrucciones claras en la vista de checkout para explicarle al cliente que el pago y la coordinación se realizarán directamente por WhatsApp.
+- **Robustez:** Código HTML5 semántico (`<header>`, `<main>`, `<section>`, `<article>`) para asegurar el renderizado correcto en cualquier navegador móvil o de escritorio.

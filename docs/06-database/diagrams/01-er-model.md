@@ -17,61 +17,66 @@ erDiagram
         string nombre
         string email
         string contrasena_hash
-        string rol "Admin, Vendedor, Repartidor"
+        string rol
     }
-  
+
     PRODUCTOS {
         int id_producto PK
         string nombre
         int stock_actual
         int stock_minimo
         decimal precio_base
+        string imagen_url
     }
-  
+
     MOVIMIENTOS_INVENTARIO {
         int id_movimiento PK
         int id_producto FK
         int id_usuario FK
-        string tipo_movimiento "Entrada, Salida"
+        string tipo
         int cantidad
-        datetime fecha
+        timestamp fecha
     }
-  
+
     LEADS {
         int id_lead PK
-        string nombre_contacto
+        string nombre
         string telefono
-        string estado_lead "Nuevo, Contactado, Convertido"
-        string temperatura "Frío, Tibio, Caliente"
+        string estado
+        string temperatura
         int id_vendedor FK
     }
-  
-    ORDENES_ENTREGA {
-        int id_orden PK
+
+    PEDIDOS {
+        int id_pedido PK
         int id_lead FK
+        int id_vendedor FK
         int id_repartidor FK
-        string estado "Pendiente, Asignada, En camino, Entregada, Fallida"
-        string direccion_entrega
-        datetime fecha_creacion
+        string estado_pago
+        string estado_entrega
+        string enlace_whatsapp
+        string direccion
+        timestamp fecha_creacion
     }
-  
-    DETALLE_ORDENES {
+
+    DETALLE_PEDIDOS {
         int id_detalle PK
-        int id_orden FK
+        int id_pedido FK
         int id_producto FK
         int cantidad
         decimal precio_unitario
     }
 
-    %% Relaciones
-    USUARIOS ||--o{ MOVIMIENTOS_INVENTARIO : "registra"
-    PRODUCTOS ||--o{ MOVIMIENTOS_INVENTARIO : "sufre"
-  
-    USUARIOS ||--o{ LEADS : "gestiona (Vendedor)"
-  
-    LEADS ||--o{ ORDENES_ENTREGA : "solicita"
-    USUARIOS ||--o{ ORDENES_ENTREGA : "despacha (Repartidor)"
-  
-    ORDENES_ENTREGA ||--|{ DETALLE_ORDENES : "contiene"
-    PRODUCTOS ||--o{ DETALLE_ORDENES : "incluido en"
+    %% Relaciones de Inventario
+    PRODUCTOS ||--o{ MOVIMIENTOS_INVENTARIO : "registra en"
+    USUARIOS ||--o{ MOVIMIENTOS_INVENTARIO : "ejecuta"
+
+    %% Relaciones de CRM y Ventas
+    USUARIOS ||--o{ LEADS : "gestiona (vendedor)"
+    LEADS ||--o{ PEDIDOS : "genera"
+    USUARIOS ||--o{ PEDIDOS : "valida (vendedor) / entrega (repartidor)"
+
+    %% Relaciones del Carrito
+    PEDIDOS ||--|{ DETALLE_PEDIDOS : "contiene"
+    PRODUCTOS ||--o{ DETALLE_PEDIDOS : "incluye"
 ```

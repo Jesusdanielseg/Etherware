@@ -1,19 +1,20 @@
+
 # Objetivos del proyecto
 
 ## 1. Objetivo general
 
-Diseñar y desarrollar Etherware™, un sistema de software para Fresitas que integre la gestión de inventarios, entregas y clientes potenciales, con el fin de organizar la información de estos procesos, facilitar su seguimiento y apoyar la toma de decisiones del negocio.
+Diseñar y desarrollar Etherware™, una plataforma de software híbrida para Fresitas que integre un catálogo web de acceso público con un sistema interno de gestión. El objetivo es centralizar la captación de pedidos, agilizar el cierre de ventas vía WhatsApp, controlar el inventario y proveer herramientas analíticas (Dashboards y reportes PDF) para apoyar la toma de decisiones gerenciales.
 
 ## 2. Objetivos específicos
 
-1. Diseñar un módulo de inventarios que permita registrar movimientos de productos, consultar existencias y generar alertas por bajo stock.
-2. Diseñar un módulo de entregas que permita consultar órdenes confirmadas, planificar rutas, asignar repartidores y actualizar el estado de las entregas.
-3. Diseñar un módulo de clientes potenciales que permita registrar leads, clasificar su estado y consultar el historial de interacciones.
-4. Contemplar la gestión de usuarios, roles y permisos para controlar el acceso a las funciones del sistema.
-5. Definir una estructura de datos que permita relacionar la información necesaria entre los módulos.
-6. Integrar progresivamente los módulos para evitar la duplicación de información y facilitar los procesos relacionados.
-7. Verificar el funcionamiento del software mediante pruebas y documentar los resultados.
+1. Desarrollar un **Portal Público (Catálogo Web)** que permita a los clientes visualizar productos, estructurar un carrito de compras y redirigir su orden automáticamente a WhatsApp.
+2. Desarrollar un **Portal de Gestión Comercial (Vendedores)** que facilite la recepción de pedidos, la validación de comprobantes de pago, la actualización de estados de entrega y el seguimiento de clientes potenciales (leads).
+3. Diseñar un **Módulo de Inventarios (Administrador)** para registrar movimientos de productos, generar alertas de stock bajo y exportar reportes formales de existencias en formato PDF.
+4. Implementar un **Dashboard Estadístico** que visualice gráficamente métricas clave del negocio (ventas mensuales, productos más vendidos, tasa de conversión) en el panel del administrador.
+5. Establecer un sistema de **gestión de usuarios** con control de acceso basado en roles estrictos (Cliente, Vendedor, Administrador).
+6. Definir una arquitectura de base de datos que conecte de forma segura las interacciones del entorno público con el privado, evitando la duplicación de información.
+7. Verificar el funcionamiento del software mediante pruebas de integración y documentar los resultados para garantizar la coherencia de los datos entre el catálogo y el sistema interno.
 
 ## 3. Criterio general de cumplimiento
 
-Los objetivos se considerarán atendidos cuando las funcionalidades correspondientes estén implementadas, integradas y verificadas mediante pruebas acordes con los requisitos aprobados. La redacción de un objetivo no constituye evidencia de que ya se haya cumplido.
+Los objetivos se considerarán atendidos cuando las funcionalidades de ambos portales (público y privado) estén implementadas, integradas y verificadas mediante pruebas acordes con los requisitos de la arquitectura híbrida aprobada. La redacción de un objetivo no constituye evidencia de que ya se haya cumplido.
