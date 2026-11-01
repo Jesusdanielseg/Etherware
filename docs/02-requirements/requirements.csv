@@ -1,4 +1,4 @@
-"ID",Tipo,Modulo,Nombre,Descripcion,Prioridad,Estado
+ID,Tipo,Modulo,Nombre,Descripcion,Prioridad,Estado
 RF-001,Funcional,Inventarios,Registro de movimientos,Registrar entradas y salidas de insumos.,Alta,Pendiente
 RF-002,Funcional,Inventarios,Control de stock,Actualizar el stock en tiempo real.,Alta,Pendiente
 RF-003,Funcional,Inventarios,Alertas de escasez,Generar alertas de insumos próximos a agotarse.,Media,Pendiente
@@ -11,6 +11,13 @@ RF-009,Funcional,Entregas,Confirmación digital,Confirmar entregas mediante firm
 RF-010,Funcional,CRM (Leads),Registro de prospectos,Registrar clientes potenciales (leads) en una base de datos.,Media,Pendiente
 RF-011,Funcional,CRM (Leads),Segmentación de clientes,Segmentar clientes por zona o tipo.,Baja,Pendiente
 RF-012,Funcional,CRM (Leads),Automatización inicial,"Automatizar el envío de mensajes iniciales (WhatsApp, correo).",Baja,Pendiente
+RF-013,Funcional,Catálogo Público,Visualización de productos,Permitir al cliente visualizar el catálogo de productos desde la web.,Alta,Pendiente
+RF-014,Funcional,Catálogo Público,Carrito de compras,Permitir al cliente estructurar su pedido agregando productos a un carrito.,Alta,Pendiente
+RF-015,Funcional,Catálogo Público,Checkout vía WhatsApp,"Generar el pedido y redirigir al cliente a WhatsApp con los datos precargados.",Alta,Pendiente
+RF-016,Funcional,Gestión Comercial,Validación de pagos,Permitir al vendedor revisar y validar comprobantes de pago de los pedidos entrantes.,Alta,Pendiente
+RF-017,Funcional,Analítica,Dashboard interactivo,"Visualizar métricas clave (ventas mensuales, productos más vendidos) mediante gráficos.",Media,Pendiente
+RF-018,Funcional,Inventarios,Exportación PDF,Generar y descargar reportes formales de inventario y stock en formato PDF.,Media,Pendiente
+RF-019,Funcional,Seguridad,Gestión de roles y accesos,"Controlar el acceso diferenciado para Administrador, Vendedor y Cliente.",Alta,Pendiente
 RNF-001,No Funcional,UX/UI,Usabilidad,Interfaz sencilla y fácil de usar para usuarios con conocimientos básicos.,Alta,Pendiente
 RNF-002,No Funcional,Arquitectura,Multiplataforma,Acceso desde dispositivos móviles y PC.,Alta,Pendiente
 RNF-003,No Funcional,Rendimiento,Tiempo de respuesta,Tiempo de respuesta rápido (menos de 3 segundos por operación).,Media,Pendiente

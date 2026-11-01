@@ -1,13 +1,12 @@
-
 # Diagrama de Clases (UML)
 
-**Descripción:** Este documento define la arquitectura estática orientada a objetos de Etherware. Se aplica el principio de herencia para la gestión de usuarios y composición para los módulos operativos, sirviendo como base directa para el diseño del modelo Entidad-Relación de la base de datos.
+**Descripción:** Este documento define la arquitectura estática orientada a objetos de Etherware. Se adapta al modelo híbrido separando las capacidades analíticas y de gestión interna frente a las interacciones del catálogo público.
 
 ## 1. Reglas de Diseño
 
-* **Herencia:** Se utiliza una clase base `Usuario` para centralizar la autenticación, heredando a roles específicos.
-* **Separación de Responsabilidades:** Las órdenes de entrega, el inventario y los clientes potenciales (Leads) están aislados en sus propias estructuras.
-* **Roles del Sistema:** El cliente final NO interactúa con el sistema, por lo que su representación es puramente un registro de datos (Lead/Cliente).
+- **Herencia de Usuarios:** Se utiliza una clase base `Usuario` para centralizar la autenticación, heredando a tres roles estrictos: Administrador, Vendedor y Cliente.
+- **Participación del Cliente:** A diferencia de un ERP tradicional, el Cliente es un actor activo del sistema (Portal Público) responsable de instanciar los Pedidos antes de la validación.
+- **Desacoplamiento de Pagos:** El sistema no procesa pagos internamente; la clase `Pedido` delega esta responsabilidad a la verificación manual (vía WhatsApp) gestionada por el Vendedor.
 
 ## 2. Diagrama de Clases (Mermaid)
 
@@ -19,53 +18,55 @@ classDiagram
         +String nombre
         +String email
         +String contrasena
+        +String rol
         +autenticar() boolean
     }
   
     class Administrador {
-        +String nivelAcceso
+        +verDashboardEstadistico() void
+        +generarReportePDF() void
         +gestionarUsuarios() void
     }
   
-    class Repartidor {
-        +String vehiculo
-        +actualizarEstadoEntrega() void
-    }
-  
     class Vendedor {
-        +String zona
-        +registrarLead() void
-        +crearOrden() void
+        +String zonaAsignada
+        +validarPagoWhatsApp() void
+        +actualizarEstadoPedido() void
+        +gestionarLead() void
+    }
+
+    class Cliente {
+        +String telefono
+        +String direccionEnvio
+        +armarCarrito() void
+        +enviarPedidoWhatsApp() void
     }
 
     %% HERENCIA
     Usuario <|-- Administrador
-    Usuario <|-- Repartidor
     Usuario <|-- Vendedor
+    Usuario <|-- Cliente
 
-    %% MÓDULO DE INVENTARIO
-    class Inventario {
-        +int idInventario
-        +Date ultimaActualizacion
-        +generarReporte() void
-    }
-
+    %% MÓDULO DE INVENTARIO Y CATÁLOGO
     class Producto {
         +int idProducto
         +String nombre
         +int stockActual
         +int stockMinimo
         +double precioBase
+        +String imagenUrl
         +actualizarStock() void
     }
 
-    %% MÓDULO DE ENTREGAS
-    class OrdenEntrega {
-        +int idOrden
-        +String estadoActual
+    %% MÓDULO DE VENTAS Y ENTREGAS
+    class Pedido {
+        +int idPedido
         +Date fechaCreacion
-        +String direccion
-        +asignarRepartidor() void
+        +String estadoPago
+        +String estadoEntrega
+        +String enlaceWhatsApp
+        +double total
+        +calcularTotal() void
     }
 
     %% MÓDULO CRM (LEADS)
@@ -74,15 +75,12 @@ classDiagram
         +String nombreContacto
         +String telefono
         +String estadoLead
-        +String temperatura
         +cambiarEstado() void
     }
 
     %% RELACIONES
-    Inventario "1" *-- "*" Producto : contiene
-    Administrador --> Inventario : administra
-    Vendedor --> OrdenEntrega : registra
-    Vendedor --> Lead : gestiona
-    Repartidor "1" --> "*" OrdenEntrega : despacha
-    OrdenEntrega "*" --> "*" Producto : incluye
-```
+    Administrador --> Producto : administra inventario
+    Vendedor --> Pedido : valida y despacha
+    Vendedor --> Lead : capta y gestiona
+    Cliente "1" --> "*" Pedido : genera desde catálogo
+    Pedido "*" *-- "*" Producto : incluye
