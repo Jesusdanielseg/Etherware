@@ -1,50 +1,40 @@
 # Mapa de Navegación
 
-**Descripción:** Este documento visualiza la arquitectura de páginas de la aplicación web Fresitas, definiendo la jerarquía del contenido y el recorrido del usuario (público, cliente autenticado y administrador).
+**Descripción:** Este documento define la jerarquía de las pantallas y las rutas de navegación de Etherware, dividiendo estrictamente el acceso público (clientes) del acceso administrativo privado (empleados).
 
 ## 1. Reglas de Navegación
 
-* **Separación de roles:** El cliente navega por el catálogo, registro, carrito y confirmación; el administrador ingresa por login hacia inventario, pedidos y reportes.
-* **Flujo de compra:** Diseñado para completar un pedido en pocos pasos (Inicio -> Catálogo -> Carrito -> Confirmación).
-* **Prevención de errores:** Los flujos de registro y login incluyen validación de errores antes de continuar.
+- **Separación de Portales:** El cliente final no se registra ni inicia sesión; navega libremente por el catálogo y el carrito hasta exportar su pedido.
+- **Flujo de Compra (Público):** Diseñado para máxima fricción cero (Inicio -> Catálogo -> Carrito -> Checkout WhatsApp).
+- **Acceso Protegido (Privado):** El Login es exclusivo para Vendedores y el Administrador. Una vez autenticados, aterrizan directamente en el Dashboard estadístico antes de ir a otros módulos operativos.
 
 ## 2. Diagrama de Navegación (Mermaid)
 
 ```mermaid
 flowchart TD
-    classDef raiz fill:#F2D3F8,stroke:#B496DB,stroke-width:2px,color:#000;
-    classDef modulo fill:#B19EDC,stroke:#B496DB,stroke-width:2px,color:#000;
-    classDef pantalla fill:#E6E6FA,stroke:#B7ABDB,stroke-width:1px,color:#000;
+    classDef publico fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#000;
+    classDef privado fill:#e2e3e5,stroke:#6c757d,stroke-width:2px,color:#000;
+    classDef wpp fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#000;
 
-    A((FRESITAS)):::raiz
-  
-    %% Módulos Principales
-    A --> B[Inicio / Catálogo]:::modulo
-    A --> C[Compra]:::modulo
-    A --> D[Administrador]:::modulo
-  
-    %% Rama Inicio / Catálogo
-    B --> B1[Detalle Producto]:::pantalla
-    B --> B2[Registro]:::pantalla
-    B --> B3[Login]:::pantalla
-  
-    B3 --> B3a[Recuperar Contraseña]:::pantalla
-    B3 --> B3b[Mi Cuenta]:::pantalla
-    B3b --> B3b1[Mis Pedidos]:::pantalla
-    B3b --> B3b2[Dirección Entrega]:::pantalla
-  
-    %% Rama Compra
-    C --> C1[Carrito de Compras]:::pantalla
-    C1 --> C1a[Modificar Cantidad / Eliminar]:::pantalla
-    C1 --> C2[Confirmar Pedido]:::pantalla
-    C2 --> C2a[Validación de Errores]:::pantalla
-  
-    %% Rama Administrador (Protegida)
-    D --> D1[Panel de Inventario]:::pantalla
-    D1 --> D1a[Consultar / Actualizar Stock]:::pantalla
-  
-    D --> D2[Gestión de Pedidos]:::pantalla
-    D2 --> D2a[Cambiar Estado]:::pantalla
-  
-    D --> D3[Reportes]:::pantalla
+    subgraph Portal Público [Vista Cliente]
+        A["Inicio / Catálogo"]:::publico --> B["Detalle de Producto"]:::publico
+        A --> C["Carrito de Compras"]:::publico
+        B --> C
+        C --> D["Checkout / Datos de Envío"]:::publico
+        D -.-> WPP["WhatsApp: Envío de Pedido"]:::wpp
+    end
+
+    subgraph Portal Privado [Vista Gestión Interna]
+        L["Pantalla de Login (Solo Empleados)"]:::privado --> Dash["Dashboard Estadístico"]:::privado
+    
+        Dash --> Inv["Módulo de Inventario"]:::privado
+        Inv --> Inv1["Tabla de Stock"]:::privado
+        Inv --> Inv2["Exportar Reporte PDF"]:::privado
+    
+        Dash --> Ventas["Módulo de Pedidos"]:::privado
+        Ventas --> V1["Lista de Pedidos"]:::privado
+        Ventas --> V2["Validación de Pagos"]:::privado
+    
+        Dash --> CRM["Módulo CRM (Leads)"]:::privado
+    end
 ```

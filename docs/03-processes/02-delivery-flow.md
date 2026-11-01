@@ -1,40 +1,48 @@
+# Proceso 02: Flujo de Gestión de Pedidos, Validaciones y Entregas
 
-# Proceso 02: Flujo de Gestión de Entregas y Despachos
-
-**Descripción:** Este documento detalla el ciclo de vida de un pedido, desde que se confirma la venta hasta que el producto es entregado al cliente, definiendo las responsabilidades de cada rol en el cambio de estados.
+**Descripción:** Este documento detalla el ciclo de vida completo de un pedido bajo la arquitectura híbrida: desde que el cliente lo genera en el catálogo web público, pasando por la validación del pago vía WhatsApp por parte del vendedor, hasta el despacho y entrega final.
 
 ## 1. Reglas del Proceso
 
-* Solo el Vendedor o Administrador pueden crear la orden inicial.
-* Una orden recién creada siempre nace en estado **Pendiente**.
-* Para pasar a estado **Entregado**, el sistema exige obligatoriamente adjuntar una evidencia (firma o foto).
-* Si una entrega falla, es obligatorio registrar un comentario con el motivo.
+- **Origen del Pedido:** La orden nace cuando el cliente confirma su carrito en el Portal Público. El sistema genera una pre-orden con estado **Pendiente de Pago** y redirige al cliente a WhatsApp.
+- **Validación Estricta:** El Vendedor es el único autorizado para cambiar el estado a **Validado** en el Portal Privado, y solo debe hacerlo tras verificar el comprobante de pago en WhatsApp.
+- **Impacto en Inventario:** Al pasar a estado **Validado**, el sistema descuenta automáticamente los productos del stock (conectando con el Proceso 01).
+- **Evidencia de Entrega:** Para pasar a estado **Entregado**, el repartidor debe confirmar la entrega y, en caso de fallo, es obligatorio registrar el motivo en el sistema.
 
 ## 2. Diagrama de Actividad (Mermaid)
 
 ```mermaid
 flowchart TD
-    %% Definición de Actores mediante colores/estilos
+    %% Definición de Actores
+    classDef cliente fill:#e9ecef,stroke:#6c757d,stroke-width:2px;
     classDef vendedor fill:#d4edda,stroke:#28a745,stroke-width:2px;
-    classDef logistica fill:#cce5ff,stroke:#007bff,stroke-width:2px;
     classDef repartidor fill:#fff3cd,stroke:#ffc107,stroke-width:2px;
-    classDef sistema fill:#e2e3e5,stroke:#6c757d,stroke-width:2px;
+    classDef sistema fill:#cce5ff,stroke:#007bff,stroke-width:2px;
 
-    A([Inicio: Venta Confirmada]) --> B[Registrar Orden y Cliente]:::vendedor
-    B --> C[Estado: Pendiente]:::sistema
-    C --> D[Asignar a Repartidor]:::logistica
-    D --> E[Estado: Asignada]:::sistema
-    E --> F[Organizar ruta de entrega]:::repartidor
-    F --> G[Iniciar recorrido]:::repartidor
-    G --> H[Estado: En camino]:::sistema
-    H --> I{¿Entrega Exitosa?}
+    A([Inicio: Cliente en Catálogo Web]) --> B[Armar carrito y confirmar]:::cliente
+    B --> C[Sistema crea pre-orden]:::sistema
+    C --> D[Estado: Pendiente de Pago]:::sistema
+    D --> E[Redirección a WhatsApp con detalle del pedido]:::cliente
   
-    I -- Sí --> J[Capturar Firma/Foto]:::repartidor
-    J --> K[Estado: Entregado]:::sistema
+    E --> F[Recibir mensaje y solicitar comprobante]:::vendedor
+    F --> G{¿Pago válido?}
   
-    I -- No --> L[Registrar motivo del fallo]:::repartidor
-    L --> M[Estado: Fallida / Reprogramar]:::sistema
+    G -- No --> H[Anular orden]:::vendedor
+    H --> I[Estado: Cancelado]:::sistema
   
-    K --> N([Fin del proceso])
-    M --> N
+    G -- Sí --> J[Aprobar pedido en Portal Privado]:::vendedor
+    J --> K[Estado: Validado / Preparación]:::sistema
+    K --> L[Asignar Repartidor y organizar ruta]:::vendedor
+    L --> M[Estado: En camino]:::sistema
+    M --> N{¿Entrega Exitosa?}
+  
+    N -- Sí --> O[Confirmar entrega / Capturar evidencia]:::repartidor
+    O --> P[Estado: Entregado]:::sistema
+  
+    N -- No --> Q[Registrar motivo del fallo]:::repartidor
+    Q --> R[Estado: Fallida / Reprogramar]:::sistema
+  
+    I --> S([Fin del proceso])
+    P --> S
+    R --> S
 ```
