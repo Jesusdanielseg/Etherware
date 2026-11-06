@@ -13,52 +13,51 @@
 ```mermaid
 erDiagram
     USUARIOS {
-        int id_usuario PK
+        int id_usuarios PK
         string nombre
         string email
         string contrasena_hash
-        string rol
+        string id_rol
     }
-
+  
     PRODUCTOS {
-        int id_producto PK
+        int id_productos PK
         string nombre
         int stock_actual
         int stock_minimo
         decimal precio_base
         string imagen_url
     }
-
+  
     MOVIMIENTOS_INVENTARIO {
         int id_movimiento PK
         int id_producto FK
         int id_usuario FK
-        string tipo
+        string tipo_movimiento
         int cantidad
         timestamp fecha
     }
-
+  
     LEADS {
-        int id_lead PK
+        int id_leads PK
+        int id_usuario FK
         string nombre
         string telefono
         string estado
         string temperatura
-        int id_vendedor FK
     }
-
+  
     PEDIDOS {
         int id_pedido PK
+        int id_usuario FK
         int id_lead FK
-        int id_vendedor FK
-        int id_repartidor FK
         string estado_pago
         string estado_entrega
         string enlace_whatsapp
-        string direccion
-        timestamp fecha_creacion
+        string direccion_entrega
+        datetime fecha_creacion
     }
-
+  
     DETALLE_PEDIDOS {
         int id_detalle PK
         int id_pedido FK
@@ -70,12 +69,12 @@ erDiagram
     %% Relaciones de Inventario
     PRODUCTOS ||--o{ MOVIMIENTOS_INVENTARIO : "registra en"
     USUARIOS ||--o{ MOVIMIENTOS_INVENTARIO : "ejecuta"
-
+  
     %% Relaciones de CRM y Ventas
     USUARIOS ||--o{ LEADS : "gestiona (vendedor)"
     LEADS ||--o{ PEDIDOS : "genera"
-    USUARIOS ||--o{ PEDIDOS : "valida (vendedor) / entrega (repartidor)"
-
+    USUARIOS ||--o{ PEDIDOS : "valida / entrega"
+  
     %% Relaciones del Carrito
     PEDIDOS ||--|{ DETALLE_PEDIDOS : "contiene"
     PRODUCTOS ||--o{ DETALLE_PEDIDOS : "incluye"
