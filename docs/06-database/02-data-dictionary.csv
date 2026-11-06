@@ -1,38 +1,42 @@
 Tabla,Columna,Tipo_Dato,Llave,Descripcion
-usuarios,id_usuario,INT,PK,Identificador único del usuario
-usuarios,nombre,VARCHAR(100),NOT NULL,Nombre completo
-usuarios,email,VARCHAR(100),UNIQUE,Correo para inicio de sesión
+usuarios,id_usuarios,INT,PK,Identificador único del usuario / empleado
+usuarios,nombre,VARCHAR(100),NOT NULL,Nombre completo del usuario
+usuarios,email,VARCHAR(100),UNIQUE,Correo electrónico para inicio de sesión
 usuarios,contrasena_hash,VARCHAR(255),NOT NULL,Contraseña encriptada por seguridad
-usuarios,rol,VARCHAR(50),NOT NULL,Roles permitidos: Admin / Vendedor / Cliente / Repartidor
-productos,id_producto,INT,PK,Identificador del insumo o producto final
-productos,nombre,VARCHAR(100),UNIQUE,"Ej. Fresas, Vasos, Crema"
-productos,stock_actual,INT,NOT NULL,Cantidad disponible en tiempo real
-productos,stock_minimo,INT,DEFAULT,Umbral para disparar alerta de escasez en Dashboard
-productos,precio_base,"DECIMAL(10,2)",DEFAULT,Costo o precio de referencia
-productos,imagen_url,VARCHAR(255),DEFAULT,Ruta de la imagen para el Catálogo Público
-movimientos_inventario,id_movimiento,INT,PK,Registro de auditoría (PDF / RNF)
-movimientos_inventario,id_producto,INT,FK,Referencia al insumo modificado
-movimientos_inventario,id_usuario,INT,FK,Empleado que realizó el movimiento
-movimientos_inventario,tipo,VARCHAR(20),NOT NULL,Valores: Entrada / Salida / Devolucion
-movimientos_inventario,cantidad,INT,NOT NULL,Cuánto entró o salió
-movimientos_inventario,fecha,TIMESTAMP,NOT NULL,Fecha y hora exacta del registro
-leads,id_lead,INT,PK,Identificador del prospecto (CRM)
-leads,nombre,VARCHAR(100),NOT NULL,Nombre del cliente potencial
-leads,telefono,VARCHAR(20),UNIQUE,Número de WhatsApp sin duplicados
-leads,estado,VARCHAR(50),NOT NULL,Valores: Nuevo / En Negociacion / Convertido
-leads,temperatura,VARCHAR(20),NOT NULL,Valores: Frío / Tibio / Caliente
-leads,id_vendedor,INT,FK,Vendedor responsable del seguimiento
-pedidos,id_pedido,INT,PK,Identificador principal del pedido generado en la Web
-pedidos,id_lead,INT,FK,Cliente/Lead que armó el carrito
-pedidos,id_vendedor,INT,FK,Vendedor que validó el pago por WhatsApp
-pedidos,id_repartidor,INT,FK,Domiciliario asignado a la ruta
-pedidos,estado_pago,VARCHAR(50),NOT NULL,Pendiente / Validado / Rechazado
-pedidos,estado_entrega,VARCHAR(50),NOT NULL,Preparacion / En camino / Entregado / Fallida
-pedidos,enlace_whatsapp,VARCHAR(255),DEFAULT,URL dinámica wa.me generada para el cierre
-pedidos,direccion,VARCHAR(255),NOT NULL,Destino físico de la entrega
-pedidos,fecha_creacion,TIMESTAMP,NOT NULL,Momento exacto de confirmación en el catálogo
-detalle_pedidos,id_detalle,INT,PK,Línea individual del carrito/pedido
+usuarios,id_rol,VARCHAR(50),NOT NULL,Rol asignado (Admin / Vendedor / Repartidor / Cliente)
+,,,,
+productos,id_productos,INT,PK,Identificador único del producto o insumo
+productos,nombre,VARCHAR(100),UNIQUE,"Nombre del producto (Ej. Fresas, Vasos, Crema)"
+productos,stock_actual,INT,NOT NULL,Cantidad disponible en inventario en tiempo real
+productos,stock_minimo,INT,NOT NULL,Umbral mínimo para disparar alertas de escasez
+productos,precio_base,"DECIMAL(10,2)",NOT NULL,Precio base o de referencia del producto
+productos,imagen_url,VARCHAR(45),NULL,Ruta o enlace de la imagen del producto
+,,,,
+movimientos_inventario,id_movimiento,INT,PK,Registro de auditoría de entradas y salidas
+movimientos_inventario,id_producto,INT,FK,Referencia al producto modificado
+movimientos_inventario,id_usuario,INT,FK,Usuario responsable de realizar el movimiento
+movimientos_inventario,tipo_movimiento,VARCHAR(20),NOT NULL,Tipo de operación: Entrada / Salida
+movimientos_inventario,cantidad,INT,NOT NULL,Unidades que ingresaron o salieron del inventario
+movimientos_inventario,fecha,TIMESTAMP,NOT NULL,Fecha y hora exacta del registro del movimiento
+,,,,
+leads,id_leads,INT,PK,Identificador único del prospecto o cliente potencial (CRM)
+leads,id_usuario,INT,FK,Usuario / Vendedor responsable asignado al seguimiento del lead
+leads,nombre,VARCHAR(100),NOT NULL,Nombre completo del lead
+leads,telefono,VARCHAR(20),UNIQUE,Número de teléfono o WhatsApp sin duplicados
+leads,estado,VARCHAR(50),NOT NULL,Estado del prospecto: Nuevo / Contactado / Convertido
+leads,temperatura,VARCHAR(20),NOT NULL,Calificación del prospecto: Frío / Tibio / Caliente
+,,,,
+pedidos,id_pedido,INT,PK,Identificador principal del pedido generado
+pedidos,id_usuario,INT,FK,Usuario vinculado al pedido
+pedidos,id_lead,INT,FK,Referencia al lead o cliente que realizó la compra
+pedidos,estado_pago,VARCHAR(45),NOT NULL,Estado actual del pago de la orden
+pedidos,estado_entrega,VARCHAR(45),NOT NULL,Estado logístico: Pendiente / En camino / Entregada
+pedidos,enlace_whatsapp,VARCHAR(100),NOT NULL,Enlace de comunicación vía WhatsApp con el cliente
+pedidos,direccion_entrega,VARCHAR(100),NOT NULL,Dirección física de destino para el despacho
+pedidos,fecha_creacion,DATETIME,NOT NULL,Momento exacto en que se registró la venta o pedido
+,,,,
+detalle_pedidos,id_detalle,INT,PK,Línea individual del detalle de la orden
 detalle_pedidos,id_pedido,INT,FK,Referencia al pedido principal
-detalle_pedidos,id_producto,INT,FK,Producto específico vendido
-detalle_pedidos,cantidad,INT,NOT NULL,Unidades vendidas de ese producto
-detalle_pedidos,precio_unitario,"DECIMAL(10,2)",NOT NULL,Precio congelado al momento de la venta
+detalle_pedidos,id_producto,INT,FK,Producto específico incluido en el pedido
+detalle_pedidos,cantidad,INT,NOT NULL,Unidades vendidas de ese producto específico
+detalle_pedidos,precio_unitario,"DECIMAL(10,2)",NOT NULL,Precio congelado del producto al momento de la venta
