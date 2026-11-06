@@ -39,20 +39,22 @@ flowchart TD
 
     subgraph Backend [Capa de Lógica - Servidor FastAPI]
         Auth[Gestor de Seguridad/Roles]:::backend
-        Ventas[Controlador de Pedidos/Leads]:::backend
+        Ventas[Controlador de Pedidos]:::backend
         Inv[Controlador de Inventarios]:::backend
+        Ent[Gestor de Entregas]:::backend
+        CRM[Gestor de Leads]:::backend
         Stats[Motor Estadístico y Generador PDF]:::backend
       
-        Auth --> Ventas & Inv & Stats
+        Auth --> Ventas & Inv & Ent & CRM & Stats
     end
 
     subgraph Modelo [Capa de Persistencia]
         ORM[ORM SQLAlchemy]:::db
         SQL[(Base de Datos Relacional)]:::db
-      
+
         ORM <-->|Conexión Corta| SQL
     end
-  
+
     %% API Externa y Flujo de salida
     Whatsapp[WhatsApp: Validación y Pago]:::api
 
@@ -61,4 +63,5 @@ flowchart TD
     Priv <-->|Peticiones HTTP/JSON| Auth
     Whatsapp -.->|Vendedor valida| Priv
     
-    Ventas & Inv & Stats <--> ORM
+    Ventas & Inv & Ent & CRM & Stats <--> ORM
+    CRM -.->|Genera enlace| Whatsapp
