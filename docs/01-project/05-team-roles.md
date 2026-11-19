@@ -3,9 +3,9 @@
 
 ## 1. Equipo de desarrollo
 
-| Integrante                   | Participación                                    |
+| Integrante                   | Participación                                     |
 | ---------------------------- | ------------------------------------------------- |
-| Jesús Daniel Seguanes Arias | Desarrollador único (Full-Stack) de Etherware™. |
+| Jesús Daniel Seguanes Arias  | Desarrollador único (Full-Stack) de Etherware™.   |
 
 ## 2. Responsabilidades del equipo
 
@@ -27,8 +27,8 @@ El proyecto utilizará Scrum adaptado para un entorno de desarrollo individual, 
 | Rol Scrum     | Responsable                                      |
 | ------------- | ------------------------------------------------ |
 | Product Owner | Representante de Fresitas / Instructor evaluador |
-| Scrum Master  | Jesús Daniel Seguanes Arias                     |
-| Developer     | Jesús Daniel Seguanes Arias                     |
+| Scrum Master  | Jesús Daniel Seguanes Arias                      |
+| Developer     | Jesús Daniel Seguanes Arias                      |
 
 La validación de necesidades, priorización del Backlog y aprobación de los entregables recae sobre el Product Owner.
 
