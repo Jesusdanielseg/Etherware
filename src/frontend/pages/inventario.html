@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etherware — Inventario</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="admin-layout">
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <a href="dashboard.html" class="brand">
+            <img class="brand-mark" src="../assets/img/etherware-marca-fresa.svg" alt="" aria-hidden="true">
+            ETHERWARE
+        </a>
+    </div>
+    <nav class="sidebar-nav" aria-label="Panel administrativo">
+        <a href="dashboard.html"><img src="../assets/img/dashboard.png" alt="" aria-hidden="true" width="20" height="20"><span>Dashboard</span></a>
+        <a class="active" href="inventario.html"><img src="../assets/img/inventario-activo.png" alt="" aria-hidden="true" width="20" height="20"><span>Inventario</span></a>
+        <a href="pedidos.html"><img src="../assets/img/pedidos.png" alt="" aria-hidden="true" width="20" height="20"><span>Pedidos &amp;<br>Entregas</span></a>
+        <a href="crm.html"><img src="../assets/img/clientes.png" alt="" aria-hidden="true" width="20" height="20"><span>CRM / Leads</span></a>
+        <a class="logout-link" href="../index.html"><img src="../assets/img/cerrar-sesion.png" alt="" aria-hidden="true" width="20" height="20"><span>Cerrar sesión</span></a>
+    </nav>
+</aside>
+<main class="admin-main">
+    <header class="admin-topbar">
+        <strong>Panel de Administración</strong>
+        <div class="topbar-user">
+            <span>Hola, Administrador</span>
+            <img class="profile-icon" src="../assets/img/usuario.svg" alt="Perfil de Administrador">
+        </div>
+    </header>
+    <div class="admin-content">
+        <h1>Gestión de Inventario</h1>
+        <p class="admin-lead">Control de existencias, entradas y salidas de insumos</p>
+        <div class="admin-toolbar">
+            <label class="toolbar-search">⌕ <input type="search" placeholder="Buscar producto o código..."></label>
+            <div class="filter-block">
+                <strong>Filtrar por:</strong>
+                <div class="filter-options"><button type="button">Todos</button><button type="button">Stock bajo</button></div>
+            </div>
+            <div class="toolbar-actions">
+                <button class="btn btn-primary" type="button">+ Registrar movimiento</button>
+                <button class="btn btn-secondary" type="button">Exportar PDF</button>
+            </div>
+        </div>
+        <section class="card table-card">
+            <table class="data-table">
+                <thead>
+                    <tr><th>Código</th><th>Producto / Insumo</th><th>Categoría</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>#001</td><td>Fresas con crema clásica</td><td>Insumos</td><td>2 un.</td><td><span class="badge badge-danger">Bajo</span></td><td><button class="edit-action" type="button" aria-label="Editar Fresas con crema clásica">✎</button></td></tr>
+                    <tr><td>#002</td><td>Fresas con crema con oreo</td><td>Insumos</td><td>5 un.</td><td><span class="badge badge-danger">Bajo</span></td><td><button class="edit-action" type="button" aria-label="Editar Fresas con crema con oreo">✎</button></td></tr>
+                    <tr><td>#003</td><td>Fresas con crema y chocolate</td><td>Insumos</td><td>42 un.</td><td><span class="badge badge-ok">Óptimo</span></td><td><button class="edit-action" type="button" aria-label="Editar Fresas con crema y chocolate">✎</button></td></tr>
+                    <tr><td>#004</td><td>Combo familiar (4 porciones)</td><td>Insumos</td><td>15 un.</td><td><span class="badge badge-ok">Óptimo</span></td><td><button class="edit-action" type="button" aria-label="Editar Combo familiar">✎</button></td></tr>
+                    <tr><td>#005</td><td>Mini-fresas con crema (vasito)</td><td>Insumos</td><td>30 un.</td><td><span class="badge badge-ok">Óptimo</span></td><td><button class="edit-action" type="button" aria-label="Editar Mini-fresas con crema">✎</button></td></tr>
+                    <tr><td>#006</td><td>Envases de plástico 16oz</td><td>Empaque</td><td>120 un.</td><td><span class="badge badge-ok">Óptimo</span></td><td><button class="edit-action" type="button" aria-label="Editar Envases de plástico">✎</button></td></tr>
+                    <tr><td>#007</td><td>Fresas</td><td>Materia prima</td><td>12 kg</td><td><span class="badge badge-ok">Óptimo</span></td><td><button class="edit-action" type="button" aria-label="Editar Fresas">✎</button></td></tr>
+                    <tr><td>#008</td><td>Topping</td><td>Materia prima</td><td>6 paquetes</td><td><span class="badge badge-ok">Óptimo</span></td><td><button class="edit-action" type="button" aria-label="Editar Topping">✎</button></td></tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</main>
+<dialog class="admin-dialog" id="inventory-dialog">
+    <form method="dialog" id="inventory-form">
+        <h2>Registrar movimiento</h2>
+        <label>Código<input name="codigo" required></label>
+        <label>Producto / insumo<input name="producto" required></label>
+        <label>Categoría<input name="categoria" required></label>
+        <label>Stock<input name="stock" required></label>
+        <div class="dialog-actions">
+            <button class="btn btn-secondary" type="button" data-close-dialog>Cancelar</button>
+            <button class="btn btn-primary" type="submit">Registrar</button>
+        </div>
+    </form>
+</dialog>
+<script src="../js/admin.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

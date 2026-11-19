@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etherware — Finalizar pedido</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header class="public-header">
+    <div class="container navbar-content">
+        <a href="../index.html" class="brand"><img class="brand-mark" src="../assets/img/etherware-marca-fresa.svg" alt="" aria-hidden="true">ETHERWARE</a>
+        <nav class="public-nav" aria-label="Navegación principal">
+            <a href="../index.html#inicio">Inicio</a><a href="../index.html#nosotros">Nosotros</a><a href="../index.html#productos" class="active">Productos</a><a href="login.html">Mi cuenta</a>
+            <a class="header-cart" href="carrito.html" aria-label="Abrir carrito"><img src="../assets/img/carrito.svg" alt="" aria-hidden="true" width="22" height="22"><span id="cart-count" hidden>0</span></a>
+        </nav>
+    </div>
+</header>
+<main class="shop-page">
+    <section class="card page-panel">
+        <h1>Finalizar pedido</h1>
+        <p class="panel-subtitle">Completa tus datos de entrega para confirmar tu orden vía WhatsApp</p>
+        <div class="checkout-grid">
+            <form class="checkout-form" id="checkout-form">
+                <div class="field full"><label for="name">Nombre completo</label><input id="name" name="name" value="María Fernanda Gómez" required></div>
+                <div class="field"><label for="phone">Teléfono / WhatsApp</label><input id="phone" name="phone" value="300 123 4567" required></div>
+                <div class="field"><label for="sector">Barrio / Sector</label><input id="sector" name="sector" value="Novalito" required></div>
+                <div class="field full"><label for="address">Dirección de entrega</label><input id="address" name="address" value="Calle 15 # 4-56" required></div>
+                <fieldset class="payment-options" style="border:0">
+                    <legend style="grid-column:1/-1;font-weight:700;margin-bottom:8px">Método de pago</legend>
+                    <label><input type="radio" name="payment" value="Transferencia" checked required>Transferencia<br>(Nequi / Bancolombia)</label>
+                    <label><input type="radio" name="payment" value="Pago contra entrega" required>Pago contra entrega<br>(Efectivo)</label>
+                </fieldset>
+                <div class="field full"><label for="notes">Observaciones del pedido</label><textarea id="notes" name="notes" rows="3">Timbrar en el segundo piso</textarea></div>
+            </form>
+            <aside class="order-summary">
+                <h2>Resumen de tu orden</h2>
+                <div class="summary-row"><span>2x Fresa con crema clásica</span><strong>$16.000</strong></div>
+                <div class="summary-row"><span>1x Fresa con crema con arequipe</span><strong>$9.500</strong></div>
+                <div class="summary-row"><span>1x Combo Familiar (4 porciones)</span><strong>$28.000</strong></div>
+                <div class="summary-divider"></div>
+                <div class="summary-meta"><span>Subtotal</span><strong>$53.500</strong></div>
+                <div class="summary-meta"><span>Domicilio</span><strong>Por convenir</strong></div>
+                <div class="summary-total"><span>Total a pagar:</span><span>$ 53.500</span></div>
+                <button class="btn btn-whatsapp" type="submit" form="checkout-form">● Agendar pedido por WhatsApp</button>
+            </aside>
+        </div>
+        <a class="back-link" href="carrito.html">← Volver al carrito</a>
+    </section>
+</main>
+<script src="../js/app.js"></script>
+<script src="../js/carrito.js"></script>
+</body>
+</html>
