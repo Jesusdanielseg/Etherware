@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etherware — CRM</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="admin-layout">
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <a href="dashboard.html" class="brand">
+            <img class="brand-mark" src="../assets/img/etherware-marca-fresa.svg" alt="" aria-hidden="true">
+            ETHERWARE
+        </a>
+    </div>
+    <nav class="sidebar-nav" aria-label="Panel administrativo">
+        <a href="dashboard.html"><img src="../assets/img/dashboard.png" alt="" aria-hidden="true" width="20" height="20"><span>Dashboard</span></a>
+        <a href="inventario.html"><img src="../assets/img/inventario.png" alt="" aria-hidden="true" width="20" height="20"><span>Inventario</span></a>
+        <a href="pedidos.html"><img src="../assets/img/pedidos.png" alt="" aria-hidden="true" width="20" height="20"><span>Pedidos &amp;<br>Entregas</span></a>
+        <a class="active" href="crm.html"><img src="../assets/img/clientes-activo.png" alt="" aria-hidden="true" width="20" height="20"><span>CRM / Leads</span></a>
+        <a class="logout-link" href="../index.html"><img src="../assets/img/cerrar-sesion.png" alt="" aria-hidden="true" width="20" height="20"><span>Cerrar sesión</span></a>
+    </nav>
+</aside>
+<main class="admin-main">
+    <header class="admin-topbar">
+        <strong>Panel de Administración</strong>
+        <div class="topbar-user">
+            <span>Hola, Administrador</span>
+            <img class="profile-icon" src="../assets/img/usuario.svg" alt="Perfil de Administrador">
+        </div>
+    </header>
+    <div class="admin-content">
+        <h1>Módulo CRM y Prospectos</h1>
+        <p class="admin-lead">Gestión de clientes potenciales y seguimiento comercial</p>
+        <div class="admin-toolbar">
+            <label class="toolbar-search">⌕ <input type="search" placeholder="Buscar cliente o teléfono..."></label>
+            <div class="filter-block">
+                <strong>Filtrar por:</strong>
+                <div class="filter-options"><button type="button">Todos</button><button type="button">Nuevos leads</button></div>
+            </div>
+            <div class="toolbar-actions">
+                <button class="btn btn-primary" type="button">+ Nuevo Prospecto</button>
+                <button class="btn" id="whatsapp-campaign" type="button" style="background:#25D366;color:#fff">Campaña WhatsApp</button>
+            </div>
+        </div>
+        <section class="card table-card">
+            <table class="data-table">
+                <thead><tr><th>Cliente</th><th>WhatsApp</th><th>Última compra</th><th>Segmento</th><th>Acciones</th></tr></thead>
+                <tbody>
+                    <tr><td>María F. Gómez</td><td>300 123 4567</td><td>Hoy - $53.500</td><td><span class="badge badge-pink">Frecuente</span></td><td><button class="whatsapp-contact" type="button">Enviar msg</button></td></tr>
+                    <tr><td>Carlos Pérez</td><td>310 456 7890</td><td>Hoy - $16.000</td><td><span class="badge badge-pink">Frecuente</span></td><td><button class="whatsapp-contact" type="button">Enviar msg</button></td></tr>
+                    <tr><td>Stiven García</td><td>320 987 6543</td><td>Hoy - $18.000</td><td><span class="badge badge-warn">Nuevo</span></td><td><button class="whatsapp-contact" type="button">Enviar msg</button></td></tr>
+                    <tr><td>Kevin Alzate</td><td>301 555 0192</td><td>Hoy - $53.500</td><td><span class="badge badge-pink">Frecuente</span></td><td><button class="whatsapp-contact" type="button">Enviar msg</button></td></tr>
+                    <tr><td>Sara Gonzales</td><td>315 222 3344</td><td>Hoy - $16.000</td><td><span class="badge badge-warn">Nuevo</span></td><td><button class="whatsapp-contact" type="button">Enviar msg</button></td></tr>
+                    <tr><td>Andrés Rojas</td><td>304 591 3468</td><td>Ayer - $28.000</td><td><span class="badge badge-warn">Nuevo</span></td><td><button class="whatsapp-contact" type="button">Enviar msg</button></td></tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</main>
+<dialog class="admin-dialog" id="crm-dialog">
+    <form method="dialog" id="crm-form">
+        <h2>Nuevo prospecto</h2>
+        <label>Cliente<input name="cliente" required></label>
+        <label>WhatsApp<input name="whatsapp" required></label>
+        <label>Segmento
+            <select name="segmento">
+                <option>Nuevo</option>
+                <option>Frecuente</option>
+            </select>
+        </label>
+        <div class="dialog-actions">
+            <button class="btn btn-secondary" type="button" data-close-dialog>Cancelar</button>
+            <button class="btn btn-primary" type="submit">Agregar</button>
+        </div>
+    </form>
+</dialog>
+<script src="../js/admin.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

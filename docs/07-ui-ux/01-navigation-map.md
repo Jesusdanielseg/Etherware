@@ -10,6 +10,18 @@
 
 ## 2. Diagrama de Navegación (Mermaid)
 
+Los wireframes aprobados están disponibles en [`wireframes/`](./wireframes/), con nombres en inglés:
+
+- `01-catalog.png`
+- `02-cart.png`
+- `03-checkout.png`
+- `04-login.png`
+- `05-dashboard.png`
+- `06-inventory.png`
+- `07-orders.png`
+- `08-crm.png`
+- `09-mobile-courier.png`
+
 ```mermaid
 flowchart TD
     classDef publico fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#000;

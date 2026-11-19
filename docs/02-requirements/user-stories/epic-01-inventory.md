@@ -1,5 +1,3 @@
-	
-
 # Épica 01: Gestión de Inventarios
 
 **Descripción:** Esta épica abarca todas las funcionalidades necesarias para que Fresitas pueda controlar las entradas, salidas, niveles de stock y costos de sus insumos (fresas, crema, empaques, etc.) en tiempo real.

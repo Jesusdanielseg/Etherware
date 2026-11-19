@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etherware — Pedidos</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="admin-layout">
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <a href="dashboard.html" class="brand">
+            <img class="brand-mark" src="../assets/img/etherware-marca-fresa.svg" alt="" aria-hidden="true">
+            ETHERWARE
+        </a>
+    </div>
+    <nav class="sidebar-nav" aria-label="Panel administrativo">
+        <a href="dashboard.html"><img src="../assets/img/dashboard.png" alt="" aria-hidden="true" width="20" height="20"><span>Dashboard</span></a>
+        <a href="inventario.html"><img src="../assets/img/inventario.png" alt="" aria-hidden="true" width="20" height="20"><span>Inventario</span></a>
+        <a class="active" href="pedidos.html"><img src="../assets/img/pedidos-activo.png" alt="" aria-hidden="true" width="20" height="20"><span>Pedidos &amp;<br>Entregas</span></a>
+        <a href="crm.html"><img src="../assets/img/clientes.png" alt="" aria-hidden="true" width="20" height="20"><span>CRM / Leads</span></a>
+        <a class="logout-link" href="../index.html"><img src="../assets/img/cerrar-sesion.png" alt="" aria-hidden="true" width="20" height="20"><span>Cerrar sesión</span></a>
+    </nav>
+</aside>
+<main class="admin-main">
+    <header class="admin-topbar">
+        <strong>Panel de Administración</strong>
+        <div class="topbar-user">
+            <span>Hola, Administrador</span>
+            <img class="profile-icon" src="../assets/img/usuario.svg" alt="Perfil de Administrador">
+        </div>
+    </header>
+    <div class="admin-content">
+        <h1>Pedidos &amp; Entregas</h1>
+        <p class="admin-lead">Gestión de órdenes, validación de pagos y asignación de rutas</p>
+        <div class="admin-toolbar">
+            <label class="toolbar-search">⌕ <input type="search" placeholder="Buscar pedido o ID..."></label>
+            <div class="filter-block">
+                <strong>Filtrar por:</strong>
+                <div class="filter-options">
+                    <button type="button">Todos</button>
+                    <button type="button">Pendientes</button>
+                    <button type="button">En ruta</button>
+                    <button type="button">Entregados</button>
+                </div>
+            </div>
+            <div class="toolbar-actions">
+                <button class="btn btn-primary" id="assign-route" type="button">+ Asignar ruta</button>
+                <button class="btn btn-secondary" type="button">Exportar reporte</button>
+            </div>
+        </div>
+        <section class="card table-card">
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Cliente</th><th>Total</th><th>Pago</th><th>Repartidor</th><th>Acciones</th></tr></thead>
+                <tbody>
+                    <tr><td>#1024</td><td>María F. Gómez</td><td>$53.500</td><td><span class="badge badge-ok">Nequi (Validado)</span></td><td><span class="badge badge-warn">En ruta</span></td><td><button class="invoice-action" type="button">Ver factura</button></td></tr>
+                    <tr><td>#1023</td><td>Carlos Pérez</td><td>$16.000</td><td><span class="badge badge-warn">Pendiente</span></td><td><span class="badge badge-warn">Pendiente</span></td><td><button class="invoice-action" type="button">Ver factura</button></td></tr>
+                    <tr><td>#1022</td><td>Stiven García</td><td>$18.000</td><td>Transferencia</td><td><span class="badge badge-warn">Pendiente</span></td><td><button class="invoice-action" type="button">Ver factura</button></td></tr>
+                    <tr><td>#1021</td><td>Kevin Alzate</td><td>$53.500</td><td><span class="badge badge-ok">Nequi (Validado)</span></td><td><span class="badge badge-warn">Asignado</span></td><td><button class="invoice-action" type="button">Ver factura</button></td></tr>
+                    <tr><td>#1020</td><td>Sara Gonzales</td><td>$16.000</td><td>Efectivo</td><td><span class="badge badge-warn">Pendiente</span></td><td><button class="invoice-action" type="button">Ver factura</button></td></tr>
+                    <tr><td>#1019</td><td>Andrés Rojas</td><td>$28.000</td><td><span class="badge badge-ok">Nequi (Validado)</span></td><td><span class="badge badge-warn">Pendiente</span></td><td><button class="invoice-action" type="button">Ver factura</button></td></tr>
+                    <tr><td>#1018</td><td>Sofía Tejada</td><td>$9.500</td><td>Efectivo</td><td><span class="badge badge-ok">Entregado</span></td><td><button class="invoice-action" type="button">Ver factura</button></td></tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</main>
+<script src="../js/admin.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>
