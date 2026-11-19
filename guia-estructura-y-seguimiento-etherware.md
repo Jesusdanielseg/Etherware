@@ -6,8 +6,8 @@ El **Stack Oficial de Etherware** será:
 * **Backend (Controlador):** Python con el framework FastAPI (o Flask). Esto te permite crear una API REST rápida, segura y aplicar el manejo de entornos virtuales (`venv`) y variables de entorno (`.env`) que ya dominas.
 * **Base de Datos (Modelo):** SQLite para la fase de desarrollo local (es rápido y vive en un solo archivo) y PostgreSQL para el despliegue en producción, manipulados a través de un ORM en Python (como SQLAlchemy o SQLModel) para mantener las transacciones cortas que estipulaste^^.
 
-Para programar, la estructura sera:
-	Fresitas
+Para programar, la estructura sera
+Etherware
 ├── Inicio
 │   ├── Catalogo de productos
 │   │   ├── Detalle de producto
@@ -33,7 +33,7 @@ Para programar, la estructura sera:
     │   └── Cambiar estado de pedido
     └── Reportes
         ├── Reporte de ventas
-        └── Reporte de inventario	![](blob:https://gemini.google.com/5961c400-7428-4985-a1dc-93878a00fb5b)![](blob:https://gemini.google.com/5961c400-7428-4985-a1dc-93878a00fb5b)![](blob:https://gemini.google.com/5961c400-7428-4985-a1dc-93878a00fb5b)	![](blob:https://gemini.google.com/5961c400-7428-4985-a1dc-93878a00fb5b)![](blob:https://gemini.google.com/5961c400-7428-4985-a1dc-93878a00fb5b)![](blob:https://gemini.google.com/5961c400-7428-4985-a1dc-93878a00fb5b)
+        └── Reporte de inventario
 
 ## 1. `database/` --- Base de datos
 
@@ -47,12 +47,12 @@ database/
 └── seeds/
 ```
 
-- **`sql/`**: scripts SQL principales: tablas, relaciones,
+* **`sql/`**: scripts SQL principales: tablas, relaciones,
   restricciones, índices, vistas y procedimientos si se usan. Ejemplo:
   `schema.sql`.
-- **`migrations/`**: cambios ordenados a la estructura de la base de
+* **`migrations/`**: cambios ordenados a la estructura de la base de
   datos. Ejemplo: `001_create_products.sql`.
-- **`seeds/`**: datos iniciales o ficticios para pruebas. Ejemplo:
+* **`seeds/`**: datos iniciales o ficticios para pruebas. Ejemplo:
   categorías y roles predeterminados.
 
 **No guardar aquí:** diagramas (van en `docs/06-database/diagrams/`),
@@ -134,8 +134,7 @@ docs/
                                       usuarios.
 
 `13-decisions/`                     Decisiones técnicas y de producto,
-                                      con sus motivos.
-------------------------------------------------------
+                                      con sus motivos.-
 
 Usa `.md` para documentos; `.drawio`, `.puml` o `.mmd` para diagramas
 editables; `.png` o `.svg` para exportaciones útiles.
@@ -156,11 +155,11 @@ scripts/
 └── README.md
 ```
 
-- **`setup/`**: preparación del entorno y comprobación de
+* **`setup/`**: preparación del entorno y comprobación de
   dependencias.
-- **`database/`**: tareas automatizadas de respaldo o restauración,
+* **`database/`**: tareas automatizadas de respaldo o restauración,
   cuando se implementen de forma segura.
-- **`development/`**: inicio de servicios, limpieza de temporales y
+* **`development/`**: inicio de servicios, limpieza de temporales y
   otras ayudas de desarrollo.
 
 Ejemplos posibles: `setup_environment.sh`, `backup_db.py`,
@@ -181,11 +180,11 @@ src/
 └── mobile/
 ```
 
-- **`frontend/`**: interfaz web, pantallas, componentes, estilos y
+* **`frontend/`**: interfaz web, pantallas, componentes, estilos y
   navegación.
-- **`backend/`**: lógica del servidor, reglas de negocio,
+* **`backend/`**: lógica del servidor, reglas de negocio,
   autenticación, servicios y controladores.
-- **`mobile/`**: aplicación móvil independiente, si finalmente forma
+* **`mobile/`**: aplicación móvil independiente, si finalmente forma
   parte del alcance.
 
 La organización interna dependerá de las tecnologías y la arquitectura
@@ -210,11 +209,11 @@ tests/
 └── e2e/
 ```
 
-- **`unit/`**: pruebas de funciones, validaciones y reglas de negocio
+* **`unit/`**: pruebas de funciones, validaciones y reglas de negocio
   aisladas.
-- **`integration/`**: pruebas de interacción entre módulos, servicios
+* **`integration/`**: pruebas de interacción entre módulos, servicios
   y base de datos.
-- **`e2e/`**: pruebas de recorridos completos de usuario.
+* **`e2e/`**: pruebas de recorridos completos de usuario.
 
 Ejemplos: comprobar que no se registre inventario negativo; verificar
 que crear un pedido actualice el inventario; probar el flujo completo de
@@ -228,7 +227,7 @@ pruebas en `docs/09-testing/`; pruebas automatizadas en esta carpeta.
 
 ---
 
-# Tablero de seguimiento
+## Tablero de seguimiento
 
 Marca cada casilla cuando completes la tarea. No es necesario terminar
 una sección entera para empezar otra: trabaja por incrementos y mantén
@@ -236,86 +235,86 @@ actualizado el tablero.
 
 ## A. Preparación del repositorio
 
-- [X] Crear las cinco carpetas principales.
-- [X] Crear subcarpetas iniciales de `database/`.
-- [X] Crear la estructura de `docs/`.
-- [X] Crear subcarpetas iniciales de `scripts/`.
-- [X] Crear `frontend/`, `backend/` y `mobile/` dentro de `src/`.
-- [X] Crear `unit/`, `integration/` y `e2e/` dentro de `tests/`.
-- [X] Añadir `.gitkeep` solo donde haga falta conservar carpetas
+* [X] Crear las cinco carpetas principales.
+* [X] Crear subcarpetas iniciales de `database/`.
+* [X] Crear la estructura de `docs/`.
+* [X] Crear subcarpetas iniciales de `scripts/`.
+* [X] Crear `frontend/`, `backend/` y `mobile/` dentro de `src/`.
+* [X] Crear `unit/`, `integration/` y `e2e/` dentro de `tests/`.
+* [X] Añadir `.gitkeep` solo donde haga falta conservar carpetas
   vacías.
-- [X] Revisar que `.gitignore` excluya dependencias, secretos y
+* [X] Revisar que `.gitignore` excluya dependencias, secretos y
   archivos temporales.
-- [X] Crear el `README.md` principal.
+* [X] Crear el `README.md` principal.
 
 ## B. Base de datos
 
-- [X] Elegir el motor de base de datos.
-- [X] Identificar las entidades del sistema.
-- [X] Elaborar el modelo entidad-relación.
-- [X] Elaborar el modelo relacional.
-- [ ] Revisar normalización y restricciones.
-- [ ] Crear el script inicial de estructura (`schema.sql`).
-- [ ] Crear scripts adicionales solo si son necesarios.
-- [ ] Preparar datos ficticios de prueba.
-- [ ] Definir cómo se registrarán las migraciones.
+* [X] Elegir el motor de base de datos.
+* [X] Identificar las entidades del sistema.
+* [X] Elaborar el modelo entidad-relación.
+* [X] Elaborar el modelo relacional.
+* [ ] Revisar normalización y restricciones.
+* [ ] Crear el script inicial de estructura (`schema.sql`).
+* [ ] Crear scripts adicionales solo si son necesarios.
+* [ ] Preparar datos ficticios de prueba.
+* [ ] Definir cómo se registrarán las migraciones.
 
 ## C. Documentación
 
-- [X] Documentar propósito, objetivos y alcance.
-- [X] Documentar los procesos de Fresitas que cubrirá Etherware.
-- [X] Definir requisitos funcionales.
-- [X] Definir requisitos no funcionales.
-- [X] Crear historias de usuario y criterios de aceptación.
-- [X] Documentar Scrum y sus artefactos.
-- [X] Elaborar diagramas de arquitectura y UML necesarios.
-- [ ] Documentar el diseño de la base de datos.
-- [X] Guardar prototipos y decisiones de UI/UX.
-- [ ] Documentar la API cuando esté definida.
-- [ ] Crear plan y casos de prueba.
-- [ ] Documentar instalación y despliegue.
-- [ ] Preparar manual de usuario y documentación técnica.
-- [ ] Registrar decisiones importantes.
+* [X] Documentar propósito, objetivos y alcance.
+* [X] Documentar los procesos de Fresitas que cubrirá Etherware.
+* [X] Definir requisitos funcionales.
+* [X] Definir requisitos no funcionales.
+* [X] Crear historias de usuario y criterios de aceptación.
+* [X] Documentar Scrum y sus artefactos.
+* [X] Elaborar diagramas de arquitectura y UML necesarios.
+* [X] Documentar el diseño de la base de datos.
+* [X] Guardar prototipos y decisiones de UI/UX.
+* [ ] Documentar la API cuando esté definida.
+* [ ] Crear plan y casos de prueba.
+* [ ] Documentar instalación y despliegue.
+* [ ] Preparar manual de usuario y documentación técnica.
+* [ ] Registrar decisiones importantes.
 
 ## D. Automatizaciones
 
-- [ ] Identificar tareas repetitivas que convenga automatizar.
-- [ ] Crear scripts de preparación del entorno si hacen falta.
-- [ ] Crear automatizaciones de base de datos si hacen falta.
-- [ ] Documentar cómo ejecutar cada script.
-- [ ] Comprobar que no expongan secretos ni destruyan datos
+* [ ] Identificar tareas repetitivas que convenga automatizar.
+* [ ] Crear scripts de preparación del entorno si hacen falta.
+* [ ] Crear automatizaciones de base de datos si hacen falta.
+* [ ] Documentar cómo ejecutar cada script.
+* [ ] Comprobar que no expongan secretos ni destruyan datos
   accidentalmente.
 
 ## E. Código fuente
 
-- [X] Elegir tecnologías y arquitectura.
-- [ ] Preparar el frontend.
-- [ ] Preparar el backend.
-- [ ] Definir la comunicación entre frontend y backend.
-- [ ] Implementar el primer módulo funcional.
-- [ ] Implementar la conexión con la base de datos.
-- [ ] Implementar autenticación y permisos si forman parte del
+* [X] Elegir tecnologías y arquitectura.
+* [X] Preparar el frontend.
+* [ ] Preparar el backend.
+* [ ] Definir la comunicación entre frontend y backend.
+* [ ] Implementar el primer módulo funcional.
+* [ ] Implementar la conexión con la base de datos.
+* [ ] Implementar autenticación y permisos si forman parte del
   alcance.
-- [ ] Integrar los módulos progresivamente.
-- [ ] Decidir si habrá aplicación móvil independiente.
+* [ ] Integrar los módulos progresivamente.
+* [ ] Decidir si habrá aplicación móvil independiente.
 
 ## F. Pruebas
 
-- [ ] Definir estrategia de pruebas.
-- [ ] Configurar herramientas de pruebas.
-- [ ] Crear primeras pruebas unitarias.
-- [ ] Crear pruebas de integración.
-- [ ] Crear pruebas E2E si corresponden.
-- [ ] Ejecutar pruebas y corregir errores.
-- [ ] Registrar resultados relevantes en `docs/09-testing/`.
+* [ ] Definir estrategia de pruebas.
+* [ ] Configurar herramientas de pruebas.
+* [ ] Crear primeras pruebas unitarias.
+* [ ] Crear pruebas de integración.
+* [ ] Crear pruebas E2E si corresponden.
+* [ ] Ejecutar pruebas y corregir errores.
+* [ ] Registrar resultados relevantes en `docs/09-testing/`.
 
 ## G. Revisión antes de publicar
 
-- [ ] No hay contraseñas, tokens ni claves API.
-- [ ] No hay datos personales o comerciales confidenciales.
-- [ ] No se subieron dependencias ni temporales innecesarios.
-- [ ] La documentación coincide con lo realmente implementado.
-- [ ] Los nombres de archivos son claros y consistentes.
-- [ ] Los cambios fueron revisados antes de hacer `commit` y `push`.
+* [ ] No hay contraseñas, tokens ni claves API.
+* [ ] No hay datos personales o comerciales confidenciales.
+* [ ] No se subieron dependencias ni temporales innecesarios.
+* [ ] La documentación coincide con lo realmente implementado.
+* [ ] Los nombres de archivos son claros y consistentes.
+* [ ] Los cambios fueron revisados antes de hacer `commit` y `push`.
 
 ---
